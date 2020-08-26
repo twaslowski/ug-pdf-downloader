@@ -8,11 +8,9 @@ session = HTMLSession()
 
 # Retrieves the entire webpage and returns the chunk that the song lyrics are situated in
 def _retrieve_song_body(url):
+    print(f"Retrieving url: {url}")
     response = session.get(url).content.decode('utf-8')
-    p = lyric_parser.compile_regex('\[Verse.* ?\[/tab\]')
-    content = re.search(p, response)
-    print("Fetched lyrics and chords from " + url)
-    return content.group()
+    return lyric_parser.get_song_body_from_response(response)
 
 
 def _retrieve_search_results(song_name):
@@ -22,13 +20,13 @@ def _retrieve_search_results(song_name):
     return response
 
 
-def search_song(song_name):
+def get_search_results_for_song_name(song_name):
     response = _retrieve_search_results(song_name)
     songs = search_parser.get_songs_as_list(response)
     return songs
 
 
-def get_song(url):
+def get_song_by_url(url):
     body = _retrieve_song_body(url)
     cleaned_song_body = lyric_parser.clean_song_body(body)
     song_as_lines = lyric_parser.split_song_body_into_lines(cleaned_song_body)

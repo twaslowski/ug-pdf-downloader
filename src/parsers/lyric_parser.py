@@ -1,5 +1,6 @@
 import re
 
+
 def _remove_double_blank_lines(song_body):
     song_body = \
         re.sub('\\\\r\\\\n\\\\r\\\\n\\\\r\\\\n', '\\\\r\\\\n\\\\r\\\\n', song_body)
@@ -15,7 +16,7 @@ def _remove_tags(song_body):
 # Splits lines at \r and \n characters
 # Takes a single string and returns  a list of lines consisting of both chords and lyrics
 def split_song_body_into_lines(song_body):
-    p = compile_regex('\\\\r\\\\n')
+    p = _compile_regex('\\\\r\\\\n')
     lines = re.split(p, song_body)
     print(f"Split song body into {len(lines)} lines.")
     return lines
@@ -28,5 +29,11 @@ def clean_song_body(song_body):
     return song_body
 
 
-def compile_regex(regex):
+def _compile_regex(regex):
     return re.compile(regex)
+
+
+def get_song_body_from_response(response):
+    p = _compile_regex('\[Verse.* ?\[/tab\]')
+    content = re.search(p, response)
+    return content.group()

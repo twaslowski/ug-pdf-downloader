@@ -1,0 +1,24 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.0.2] - 2020-08-26
+### Added
+- Content to the changelog
+- Content to the README.md
+
+### Removed
+- Commented lines of code from the main
+
+### Changed
+- Refactored ug_data_retriever to strictly retrieve data; the parsing of any data is delegated to the parser modules
+- Refactored main for readability
+
+## [0.0.1] - 2020-08-26
+### Added
+- README.md, License, .gitignore, changelog and other basic files
+- Created git repo
+- Basic logic: enter a title, get some song results, choose one and the script generates a pdf
+

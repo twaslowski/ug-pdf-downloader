@@ -16,7 +16,7 @@ def _get_number_of_results(response):
 def _map_songs_as_objects(songs):
     for x in range(len(songs)):
         songs[x] = {
-            'name': _get_song_name(songs[x]),
+            'title': _get_song_name(songs[x]),
             'artist': _get_song_artist(songs[x]),
             'version': _get_song_version(songs[x]),
             'votes': _get_song_votes(songs[x]),
