@@ -11,11 +11,6 @@ You can install this script on your machine by cloning this Github repository:
 
     git clone https://github.com/TobiasWaslowski/ug-pdf-downloader.git
 
-You may need to install the requests_html library; if so, run:
-
-    python3 -m pip install requests_html
-
-
 ### Usage
 
 Next up, you can just run the program! Simply run

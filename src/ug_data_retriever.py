@@ -1,22 +1,20 @@
-from requests_html import HTMLSession
+import requests
 import re
 from src.parsers import search_parser
 from src.parsers import lyric_parser
-
-session = HTMLSession()
 
 
 # Retrieves the entire webpage and returns the chunk that the song lyrics are situated in
 def _retrieve_song_body(url):
     print(f"Retrieving url: {url}")
-    response = session.get(url).content.decode('utf-8')
+    response = requests.get(url).content.decode('utf-8')
     return lyric_parser.get_song_body_from_response(response)
 
 
 def _retrieve_search_results(song_name):
     song_name = re.sub(' ', '%20', song_name)
     url = f"https://www.ultimate-guitar.com/search.php?search_type=title&value={song_name}"
-    response = session.get(url).content.decode('utf-8')
+    response = requests.get(url).content.decode('utf-8')
     return response
 
 

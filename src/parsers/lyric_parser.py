@@ -1,4 +1,5 @@
 import re
+import html
 
 
 def _remove_double_blank_lines(song_body):
@@ -23,9 +24,15 @@ def split_song_body_into_lines(song_body):
 
 
 # Strips HTML tags and removes double blank lines
+def _replace_html_special_chars(song_body):
+    song_body = re.sub('&.*?;', lambda x: html.unescape(x.group()), song_body)
+    return song_body
+
+
 def clean_song_body(song_body):
     song_body = _remove_double_blank_lines(song_body)
     song_body = _remove_tags(song_body)
+    song_body = _replace_html_special_chars(song_body)
     return song_body
 
 
