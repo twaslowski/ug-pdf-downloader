@@ -1,0 +1,10 @@
+pdf:
+  title:
+    font: Times
+    size: 18
+  artist:
+    font: Times
+    size: 12
+  body:
+    font: Times
+    size: 10

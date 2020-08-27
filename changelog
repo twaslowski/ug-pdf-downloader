@@ -20,6 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.3] - 2020-08-27
 ### Added
+- A config file
+
+### Changed
+- The pdf_writer now uses rudimentary config for font and font size
+
+
+## [0.0.3] - 2020-08-27
+### Added
 - Different strategies to parse the song body out of the original response
 to be able to retrieve songs that don't start with a [Verse] tag
 
