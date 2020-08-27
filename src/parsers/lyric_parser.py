@@ -34,18 +34,20 @@ def _compile_regex(regex):
 
 
 def get_song_body_from_response(response):
-    p = _compile_regex('\[Verse.* ?\[/tab\]')
+    p = _compile_regex('(\[Verse.* ?)\[/tab\]')
     content = re.search(p, response)
 
     # If the lyrics don't contain a [Verse] at the beginning, search for an "Intro"
     if content is None:
         alternative_p = _compile_regex('\\\\n(\[?Intro.*\[/tab\])')
-        content = re.search(alternative_p, response).group(1)
-        print(content)
+        content = re.search(alternative_p, response)
 
     if content is None:
-        alternative_p = _compile_regex('\[ch.*\[/tab\]')
-        content = re.search(alternative_p, response).group()
-        print(content)
+        alternative_p = _compile_regex('(\[ch.*)\[/tab\]')
+        content = re.search(alternative_p, response)
 
-    return content
+    if content is None:
+        print(f"Song could not be parsed: {response}")
+        exit(0)
+
+    return content.group(1)
