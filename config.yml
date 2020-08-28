@@ -6,5 +6,5 @@ pdf:
     font: Times
     size: 12
   body:
-    font: Times
+    font: Lato-Thin
     size: 10
