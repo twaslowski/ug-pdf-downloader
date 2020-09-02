@@ -1,7 +1,7 @@
 import requests
 import re
-from src.parsers import search_parser
-from src.parsers import lyric_parser
+from parsers import search_parser
+from parsers import lyric_parser
 
 
 # Retrieves the entire webpage and returns the chunk that the song lyrics are situated in

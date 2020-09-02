@@ -1,5 +1,5 @@
-from src import ug_data_retriever
-from src import pdf_writer
+import ug_data_retriever
+import pdf_writer
 
 
 def main():
@@ -18,8 +18,9 @@ def main():
     chosen_song_title = chosen_song['title']
     chosen_song_artist = chosen_song['artist']
     chosen_song_url = chosen_song['url']
+    chosen_song_version = chosen_song['version']
 
-    pdf_writer.write_song(chosen_song_title, chosen_song_artist, ug_data_retriever.get_song_by_url(chosen_song_url))
+    pdf_writer.write_song(chosen_song_title, chosen_song_artist, chosen_song_version, ug_data_retriever.get_song_by_url(chosen_song_url))
 
 
 if __name__ == "__main__":

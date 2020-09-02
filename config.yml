@@ -11,3 +11,4 @@ pdf:
     font: Times
     size: 10
     style: ''
+    multiple_columns: True
