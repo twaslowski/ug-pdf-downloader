@@ -26,6 +26,7 @@ def split_song_body_into_lines(song_body):
 # Strips HTML tags and removes double blank lines
 def _replace_html_special_chars(song_body):
     song_body = re.sub('&.*?;', lambda x: html.unescape(x.group()), song_body)
+    song_body = song_body.encode('latin-1', 'ignore').decode('latin-1')
     return song_body
 
 

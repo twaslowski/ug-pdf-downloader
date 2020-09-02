@@ -28,7 +28,7 @@ def _map_songs_as_objects(songs):
 def get_songs_as_list(response):
     data_p = _compile_regex('&quot;data&quot;:.*,&quot;types&quot;:')
     data = re.search(data_p, response).group()
-    split_p = _compile_regex('\},\{')
+    split_p = _compile_regex('\},\{&quot;id')
     songs = re.split(split_p, data)
     songs_filtered = _filter_songs(songs)
     songs_mapped = _map_songs_as_objects(songs_filtered)
@@ -44,7 +44,7 @@ def _filter_songs(songs):
 
 
 def _is_chords(song):
-    p = _compile_regex('chords')
+    p = _compile_regex('[Cc]hords')
     res = re.search(p, song)
     return True if res is not None else False
 
@@ -55,27 +55,33 @@ def print_song_data(song):
 
 def _get_song_artist(song):
     p = _compile_regex('artist_name&quot;:&quot;(.*?)&')
-    return re.search(p, song).group(1)
+    result = re.search(p, song)
+    return result.group(1) if result is not None else "Error: Artist name could not be parsed"
 
 
 def _get_song_name(song):
     p = _compile_regex('song_name&quot;:&quot;(.*?)&')
-    return re.search(p, song).group(1)
+    result = re.search(p, song)
+    return result.group(1) if result is not None else "Error: Title could not be parsed"
 
 
 def _get_song_version(song):
     p = _compile_regex('version&quot;:(.*?),')
-    return re.search(p, song).group(1)
+    result = re.search(p, song)
+    return result.group(1) if result is not None else "Error: Song versions could not be parsed"
 
 
 def _get_song_votes(song):
     p = _compile_regex('votes&quot;:(.*?),')
-    return re.search(p, song).group(1)
+    result = re.search(p, song)
+    return result.group(1) if result is not None else "Error: Song votes could not be parsed"
 
 
 def _get_song_url(song):
     p = _compile_regex('tab_url&quot;:&quot;(.*?)&')
-    return re.search(p, song).group(1)
+    result = re.search(p, song)
+    return result.group(1) if result is not None else "https://tabs.ultimate-guitar.com/tab/foo-fighters/never-gonna" \
+                                                      "-give-you-up-chords-2266705 "
 
 
 def _song_url_does_not_contain_pro_keyword(url):

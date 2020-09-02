@@ -1,13 +1,13 @@
 pdf:
   title:
-    font: Lato-Heavy
+    font: Times
     size: 18
-    style: ''
+    style: 'B'
   artist:
-    font: Lato-Regular
+    font: Times
     size: 12
     style: ''
   body:
-    font: Lato-Thin
+    font: Times
     size: 10
     style: ''
